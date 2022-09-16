@@ -1,86 +1,59 @@
-let random = Math.floor(Math.random() * 3); 
-
-function getComputerchoice(){
-    return random;
-}
-
-console.log(getComputerchoice())
-
 let computerCount = 0;
 let playerCount = 0; 
 
-//Rock-Paper-Scissors
-const computerSelection = getComputerchoice();
+const choices = ["rock","paper","scissors"]
 
-console.log(game(playRound))
-
-function game(playRound){
-    for (let i = 0; i < 2; i++) {
-        const playerSelection = window.prompt("Rock-Paper-Scissors");
-        console.log(computerCount)
-        console.log(playerCount)
-            if(computerCount < playerCount){
-                console.log("You Win! You won " + playerCount + " times")
-            }
-            else if(computerCount > playerCount){
-                console.log("You Lose! Computer won " + playerCount + " times")
-            }
+function start(){// the one who controls the round and is calling the entire game/functions
+    for (let i = 1; i <= 5; i++){
+        play(i);
     }
+    end();
 }
 
-function playRound(playerSelection, computerSelection){
-    if (playerSelection.toLowerCase() == "rock"){
-    if (getComputerchoice() === 2){
-        return "You Win! Rock beats Scissors (scissors)";
-        playerCount++;
-    }
-    else if(getComputerchoice() === 1){
-        return "You Lose! Paper beats Rock (paper)";
-        computerCount++;
-    }
-    else{
-        return "It's a Tie! You both pick Rock (rock)";
-    }
- }
- else if(playerSelection.toLowerCase() == "paper"){
-    if (getComputerchoice() === 2){
-        return "You Lose! Scissors beats Paper (scissors)";
-        computerCount++;
-    }
-    else if(getComputerchoice() === 1){
-        return "It's a Tie! You both pick Paper (paper)";
-    }
-    else{
-        return "You Win! Paper beats Rock (rock)";
-        playerCount++;
-    }
- }
- else if(playerSelection.toLowerCase() == "scissors"){
-    if (getComputerchoice() === 2){
-        return "It's a Tie! You both pick Scissors (scissors)";
-    }
-    else if(getComputerchoice() === 1){
-        return "You Win! Scissors beats Paper (paper)";
-        playerCount++;
-    }
-    else{
-        return "You Lose! Rock beats Scissors (rock)";
-        computerCount++;
-    }
- }
- console.log("Computer score " +computerCount);
- console.log("Your score " + playerCount);
+function play(){//rolls through the whole functions needed till a winner is found
+    const playerSelect = playerSelection(); 
+    const computerSelection = getComputerchoice();
+    playRound(playerSelect, computerSelection);
 }
 
 
+function playerSelection(){// Getting the input of the user; still accepts words that are not Rock, paper, scissors
+    let input = prompt("Type Rock, Paper, or Scissors");
+    while (input == null){
+        input = prompt("Type Rock, Paper, or Scissors");
+    }
+    input = input.toLowerCase();
+    return input;
+}
 
+function getComputerchoice(){ // gets a random number and pick from the 3(rock,paper,scissors)
+    return choices[Math.floor(Math.random() * choices.length)];
+}
 
+function end(){ //tells the winner at the end of every round
+    if (playerCount > computerCount){
+        console.log("You Win! This is your score: " + playerCount + " Computer: " + computerCount);
+    }
+    else if(computerCount > playerCount){
+        console.log("You Lose! Computer: " + computerCount + " You: " + playerCount);
+    }
+    else{
+        console.log("It's a tie")
+    }
+}
 
-//computer pick a random number 1-35 36-67 68-100
-//0=rock 1=paper 2=scissors
-//player: pick rock=1, paper=2, scissor=3
-//computer pick then compare sa player
-//if player chose rock he should win if comp choose scissor
-//if player chose paper he should win if comp choose rock
-//if player chose scissors he should win if comp choose paper
-//otherwise player lost
+function playRound(playerSelect, computerSelection){ //checks wether playerSelect beats computerSelection
+    if ((playerSelect == "rock" && computerSelection == "scissors") || 
+    (playerSelect == "paper" && computerSelection == "rock") || 
+    (playerSelect == "Scissors" && computerSelection == "paper")){ //the rules/code 
+        playerCount++;
+        console.log("You Win! " + playerSelect + " beats " + computerSelection);
+    } else if (playerSelect === computerSelection){
+        console.log("It's a tie");
+    } else {
+        computerCount++;
+        console.log("You Lose");
+    }
+ }
+
+ start();
