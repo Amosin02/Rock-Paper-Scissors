@@ -4,8 +4,7 @@ let playerCount = 0;
 const choices = ["rock","paper","scissors"]
 
 function start(){// the one who controls the round and is calling the entire game/functions
-    for (let i = 1; i <= 5; i++){
-        play(i);
+    for (let i = 1; i <= 1; i++){
     }
     end();
 }
@@ -44,8 +43,8 @@ function end(){ //tells the winner at the end of every round
 
 function playRound(playerSelect, computerSelection){ //checks wether playerSelect beats computerSelection
     if ((playerSelect == "rock" && computerSelection == "scissors") || 
-    (playerSelect == "paper" && computerSelection == "rock") || 
-    (playerSelect == "Scissors" && computerSelection == "paper")){ //the rules/code 
+        (playerSelect == "paper" && computerSelection == "rock") || 
+        (playerSelect == "Scissors" && computerSelection == "paper")){ //the rules/code 
         playerCount++;
         console.log("You Win! " + playerSelect + " beats " + computerSelection);
     } else if (playerSelect === computerSelection){
@@ -57,3 +56,8 @@ function playRound(playerSelect, computerSelection){ //checks wether playerSelec
  }
 
  start();
+
+ const btn = document.querySelector('.btn');
+ btn.addEventListener('click', () => {
+    console.log('hi');
+ })
