@@ -35,7 +35,6 @@ function start(){// the one who controls the round and is calling the entire gam
 function play(){//rolls through the whole functions needed till a winner is found
     const computerSelection = getComputerchoice();
     playRound(playerSelect, computerSelection);
-    console.log(game);
     if(game == 5){
         end()
     }
@@ -61,12 +60,15 @@ function getComputerchoice(){ // gets a random number and pick from the 3(rock,p
 function end(){ //tells the winner at the end of every round
     if (playerCount > computerCount){
         console.log("You Win! This is your score: " + playerCount + " Computer: " + computerCount);
+        reset();
     }
     else if(computerCount > playerCount){
         console.log("You Lose! Computer: " + computerCount + " You: " + playerCount);
+        reset();
     }
     else{
-        console.log("It's a tie")
+        console.log("Tied!")
+        reset();
     }
 }
 
@@ -84,6 +86,11 @@ function playRound(playerSelect, computerSelection){ //checks wether playerSelec
     }
  }
 
-playerSelection();
+ function reset(){
+    computerCount = 0;
+    playerCount = 0; 
+    game = 0;
+ }
+
 
 
