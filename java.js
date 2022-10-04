@@ -4,6 +4,9 @@ let game = 0;
 
 const choices = ["rock","paper","scissors"]
 
+const div = document.querySelector('div');
+const h1 = document.createElement('h1');
+
 const rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
 playerSelect = 'rock';
@@ -60,14 +63,23 @@ function getComputerchoice(){ // gets a random number and pick from the 3(rock,p
 function end(){ //tells the winner at the end of every round
     if (playerCount > computerCount){
         console.log("You Win! This is your score: " + playerCount + " Computer: " + computerCount);
+        
+        h1.textContent = "You Won!";
+        div.append(h1);
         reset();
     }
     else if(computerCount > playerCount){
         console.log("You Lose! Computer: " + computerCount + " You: " + playerCount);
+
+        h1.textContent = "You Lost!";
+        div.append(h1);
         reset();
     }
     else{
-        console.log("Tied!")
+        console.log("Tied!");
+
+        h1.textContent = "It's a tie!";
+        div.append(h1);
         reset();
     }
 }
