@@ -57,7 +57,18 @@ function playRound(playerSelect, computerSelection){ //checks wether playerSelec
 
  start();
 
- const btn = document.querySelector('.btn');
- btn.addEventListener('click', () => {
-    console.log('hi');
+ const rock = document.querySelector('.rock');
+ rock.addEventListener('click', () => {
+    console.log('rock');
  })
+
+ const paper = document.querySelector('.paper');
+ paper.addEventListener('click', () => {
+    console.log('paper');
+ })
+
+ const scissors = document.querySelector('.scissors');
+ scissors.addEventListener('click', () => {
+    console.log('scissors');
+ })
+
