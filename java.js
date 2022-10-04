@@ -1,25 +1,29 @@
 let computerCount = 0;
 let playerCount = 0; 
+let game = 0;
 
 const choices = ["rock","paper","scissors"]
 
-    const rock = document.querySelector('.rock');
-    rock.addEventListener('click', () => {
-    playerSelect = 'rock';
-    play();
-    })
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+playerSelect = 'rock';
+game++;
+play();
+})
 
-    const paper = document.querySelector('.paper');
-    paper.addEventListener('click', () => {
-    playerSelect = 'paper';
-    play();
-    })
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+playerSelect = 'paper';
+game++;
+play();
+})
 
-    const scissors = document.querySelector('.scissors');
-    scissors.addEventListener('click', () => {
-    playerSelect = 'scissors';
-    play();
-    })
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+playerSelect = 'scissors';
+game++;
+play();
+})
 
 function start(){// the one who controls the round and is calling the entire game/functions
     for (let i = 1; i <= 1; i++){
@@ -29,9 +33,12 @@ function start(){// the one who controls the round and is calling the entire gam
 }
 
 function play(){//rolls through the whole functions needed till a winner is found
-    console.log(playerSelect);
     const computerSelection = getComputerchoice();
     playRound(playerSelect, computerSelection);
+    console.log(game);
+    if(game == 5){
+        end()
+    }
 }
 
 
