@@ -3,27 +3,49 @@ let playerCount = 0;
 
 const choices = ["rock","paper","scissors"]
 
+    const rock = document.querySelector('.rock');
+    rock.addEventListener('click', () => {
+    playerSelect = 'rock';
+    play();
+    })
+
+    const paper = document.querySelector('.paper');
+    paper.addEventListener('click', () => {
+    playerSelect = 'paper';
+    play();
+    })
+
+    const scissors = document.querySelector('.scissors');
+    scissors.addEventListener('click', () => {
+    playerSelect = 'scissors';
+    play();
+    })
+
 function start(){// the one who controls the round and is calling the entire game/functions
     for (let i = 1; i <= 1; i++){
+    play(i);
     }
     end();
 }
 
 function play(){//rolls through the whole functions needed till a winner is found
-    const playerSelect = playerSelection(); 
+    console.log(playerSelect);
     const computerSelection = getComputerchoice();
     playRound(playerSelect, computerSelection);
 }
 
 
-function playerSelection(){// Getting the input of the user; still accepts words that are not Rock, paper, scissors
-    let input = prompt("Type Rock, Paper, or Scissors");
-    while (input == null){
-        input = prompt("Type Rock, Paper, or Scissors");
-    }
-    input = input.toLowerCase();
-    return input;
+function playerSelection(){
 }
+
+//function playerSelection(){// Getting the input of the user; still accepts words that are not Rock, paper, scissors
+//  let input = prompt("Type Rock, Paper, or Scissors");
+//    while (input == null){
+//        input = prompt("Type Rock, Paper, or Scissors");
+//    }
+//    input = input.toLowerCase();
+//    return input;
+//}
 
 function getComputerchoice(){ // gets a random number and pick from the 3(rock,paper,scissors)
     return choices[Math.floor(Math.random() * choices.length)];
@@ -55,20 +77,6 @@ function playRound(playerSelect, computerSelection){ //checks wether playerSelec
     }
  }
 
- start();
+playerSelection();
 
- const rock = document.querySelector('.rock');
- rock.addEventListener('click', () => {
-    console.log('rock');
- })
-
- const paper = document.querySelector('.paper');
- paper.addEventListener('click', () => {
-    console.log('paper');
- })
-
- const scissors = document.querySelector('.scissors');
- scissors.addEventListener('click', () => {
-    console.log('scissors');
- })
 
